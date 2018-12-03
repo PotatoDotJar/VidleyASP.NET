@@ -1,9 +1,23 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
+    @{ 
+        // For setting up title
+        var title = "";
+        if(String.IsNullOrWhiteSpace(ViewBag.Title))
+        {
+            title = "Vidley";
+        }
+        else
+        {
+            title = ViewBag.Title + " - Vidley";
+        }
+    }
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Vidley</title>
+    <title>@title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -13,6 +27,8 @@
         @RenderBody()
     </div>
     @Html.Partial("_Footer")
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
